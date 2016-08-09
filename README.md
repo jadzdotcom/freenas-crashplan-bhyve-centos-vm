@@ -122,7 +122,7 @@ Identify the Operating System of the VM
 iohyve set centosguest os=centos7
 ```
 
-Configure the VM with 8GB of Memory. How much memory you allocate will depend on your own requirements, [CrashPlan System Requirements](https://support.code42.com/CrashPlan/4/Getting_Started/Code42_CrashPlan_System_Requirements) are one 1G. The default for a iohyve created machines is 256M which won't get you far with CrashPlan.
+Configure the VM with 2GB of Memory. How much memory you allocate will depend on your own requirements, [CrashPlan System Requirements](https://support.code42.com/CrashPlan/4/Getting_Started/Code42_CrashPlan_System_Requirements) are one 1G. The default for a iohyve created machines is 256M which won't get you very far with CrashPlan.
 ```
 iohyve set centosguest ram=2G
 ```
@@ -220,6 +220,7 @@ Edit `/etc/fstab` to include perm mount
 
 Per https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-nfs-client-config.html 
 
-
+## Configure CrashPlan with your Backup Sources
+You should have a working CrashPlan instance at this point. You can configure a new backup source, or adopt an existing backup if you have already backed up content to CrashPlan
 
 
