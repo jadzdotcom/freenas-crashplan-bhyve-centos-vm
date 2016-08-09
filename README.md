@@ -11,11 +11,11 @@ The original method for running CrashPlan was to leverage a [plugin](https://doc
     CrashPlan app version 4.4.1 or earlier: Linux Kernel 2.6.13 or newer and glibc 2.4+
 
 ## VirtualBox
-FreeNAS has long supported VirtrualBox, an alternate virtualzation option to bhyve. VirtualBox runs as a plugin within a jail and can host operting systems that are fully compatible with CrashPlan. 
+FreeNAS has long supported VirtrualBox, an alternate virtualzation option to bhyve. VirtualBox runs as a plugin within a jail and can host operating systems that are fully compatible with CrashPlan. 
 
 
 # Hardware Requirements
-[bhyve](https://wiki.freebsd.org/bhyve) is supported on most Intel and AMD processors that report the "POPCNT" (POPulation Count) processor feature in dmesg(8). In order to test if your FreeNAS server is compatible run the following command:
+[bhyve](https://wiki.freebsd.org/bhyve) is supported on most Intel and AMD processors that report the "POPCNT" (POPulation Count) processor feature in dmesg(8). iohyve will throw an error In order to test if your FreeNAS server is compatible run the following command:
 
 ```bash
 grep POPCNT /var/run/dmesg.boot
@@ -82,7 +82,7 @@ The two tunables we will add are (where em0 is replaced with your actual network
 * `iohyve_enable="YES"`
 * `iohyve_flags="kmod=1 net=em0"`
 
-The `iohyve_enaable` tells the FreeNAS server to run `/usr/local/etc/rc.d/iohyve` on boot. The `iohyve_flags` tells iohyve to load the required Kernel Modules and also the adapter to use for virtual machine network bridging.
+The `iohyve_enable` tells the FreeNAS server to run `/usr/local/etc/rc.d/iohyve` on boot. The `iohyve_flags` tells iohyve to load the required Kernel Modules and also the adapter to use for virtual machine network bridging.
 
 ![adding-tunables](./images/adding-tunables.png?raw=true)
 
@@ -124,7 +124,7 @@ iohyve set centosguest os=centos7
 
 Configure the VM with 8GB of Memory. How much memory you allocate will depend on your own requirements, [CrashPlan System Requirements](https://support.code42.com/CrashPlan/4/Getting_Started/Code42_CrashPlan_System_Requirements) are one 1G. The default for a iohyve created machines is 256M which won't get you far with CrashPlan.
 ```
-iohyve set centosguest mem=2G
+iohyve set centosguest ram=2G
 ```
 
 Set the VM to start automatically.
@@ -169,7 +169,7 @@ cd crashplan-install
 
 Select yes for all the defaults in the CrashPlan installer.
 
-## Allow Remote Connections to CrashPlan and Connect vi GUI
+## Allow Remote Connections to CrashPlan and Connect via GUI
 Ensure the CrashPlan server procses is stopped on the CentOS VM.
 ```
 /usr/local/crashplan/bin/CrashPlanEngine stop
