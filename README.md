@@ -160,9 +160,8 @@ iohyve console centosguest
 
 ## CrashPlan Installation
 ```
-yum install wget
-wget https://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_4.7.0_Linux.tgz
-tar xvfz CrashPlan_4.7.0_Linux.tgz
+curl -O https://download.code42.com/installs/linux/install/CrashPlan/CrashPlan_4.8.0_Linux.tgz
+tar xvfz CrashPlan_4.8.0_Linux.tgz
 cd crashplan-install
 ./install.sh
 ```
